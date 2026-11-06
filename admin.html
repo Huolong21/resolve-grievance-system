@@ -1,0 +1,104 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard | Resolve{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="dashboard-heading">
+        <div>
+            <p class="eyebrow">ADMINISTRATION</p>
+            <h1>Control <span>centre.</span></h1>
+            <p>Manage and monitor student complaints in one place.</p>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <p>TOTAL COMPLAINTS</p>
+            <h2>{{ total }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>PENDING</p>
+            <h2>{{ pending }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>IN PROGRESS</p>
+            <h2>{{ progress }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>RESOLVED</p>
+            <h2>{{ resolved }}</h2>
+        </div>
+
+    </div>
+
+    <div class="table-container">
+
+        <div class="table-heading">
+            <h2>All Complaints</h2>
+            <span>COMPLAINT RECORDS</span>
+        </div>
+
+        {% if complaints %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>STUDENT</th>
+                    <th>SUBJECT</th>
+                    <th>CATEGORY</th>
+                    <th>DATE</th>
+                    <th>STATUS</th>
+                    <th>UPDATE</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for c in complaints %}
+                <tr>
+                    <td>{{ c["complaint_id"] }}</td>
+                    <td>{{ c["name"] }}</td>
+                    <td>{{ c["subject"] }}</td>
+                    <td>{{ c["category"] }}</td>
+                    <td>{{ c["date"] }}</td>
+                    <td>{{ c["status"] }}</td>
+
+                    <td>
+                        <form method="POST" action="{{ url_for('update', complaint_number=c['id']) }}">
+                            <select name="status">
+                                <option value="Pending" {% if c["status"] == "Pending" %}selected{% endif %}>Pending</option>
+                                <option value="In Progress" {% if c["status"] == "In Progress" %}selected{% endif %}>In Progress</option>
+                                <option value="Resolved" {% if c["status"] == "Resolved" %}selected{% endif %}>Resolved</option>
+                            </select>
+
+                            <button type="submit" class="update-button">Save</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <div class="empty-state">
+            <h3>No complaints yet.</h3>
+            <p>Submitted complaints will appear here.</p>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

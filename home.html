@@ -1,0 +1,82 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Home | Resolve{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">A SMARTER WAY TO BE HEARD</p>
+
+        <h1>
+            Every voice<br>
+            deserves to be <span>heard.</span>
+        </h1>
+
+        <p class="hero-description">
+            A simple and transparent platform to submit complaints,
+            track progress and make your campus a better place.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/submit" class="btn-primary">Submit a Complaint ↗</a>
+            <a href="/track" class="btn-secondary">Track Your Complaint</a>
+        </div>
+    </div>
+
+    <div class="hero-card">
+        <div class="card-top">
+            <span class="live-dot"></span>
+            <span>YOUR VOICE MATTERS</span>
+        </div>
+
+        <div class="big-r">R<span>.</span></div>
+
+        <h3>Speak up.<br>We listen.</h3>
+
+        <p>Every complaint is a step towards positive change.</p>
+
+        <div class="card-line"></div>
+
+        <div class="card-bottom">
+            <span>STUDENT SUPPORT</span>
+            <span>01 / 03</span>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="section-heading">
+        <p class="eyebrow">HOW IT WORKS</p>
+        <h2>Simple. Clear. <span>Effective.</span></h2>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <span class="feature-number">01</span>
+            <h3>Submit</h3>
+            <p>Share your concern through a simple online complaint form.</p>
+            <a href="/submit">Get started ↗</a>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-number">02</span>
+            <h3>Track</h3>
+            <p>Use your complaint ID to check the latest status of your request.</p>
+            <a href="/track">Track now ↗</a>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-number">03</span>
+            <h3>Resolve</h3>
+            <p>Follow the progress as your complaint moves towards resolution.</p>
+            <a href="/track">Learn more ↗</a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

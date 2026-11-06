@@ -1,0 +1,63 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Track Complaint | Resolve{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-heading">
+        <p class="eyebrow">STAY UPDATED</p>
+        <h1>Your concern.<br>Your <span>progress.</span></h1>
+        <p>Enter your unique complaint ID below to check the latest status of your complaint.</p>
+    </div>
+
+    <form class="complaint-form" method="POST">
+
+        <div class="form-group">
+            <label>Complaint ID</label>
+            <input
+                type="text"
+                name="complaint_id"
+                placeholder="Example: G0001"
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn-primary submit-button">
+            Check Status ↗
+        </button>
+
+        {% if message %}
+            <p class="status-message">{{ message }}</p>
+        {% endif %}
+
+    </form>
+
+    {% if complaint %}
+    <div class="result-card">
+
+        <div class="result-top">
+            <div>
+                <p class="eyebrow">COMPLAINT DETAILS</p>
+                <h2>{{ complaint["complaint_id"] }}</h2>
+            </div>
+
+            <span class="status-badge">{{ complaint["status"] }}</span>
+        </div>
+
+        <div class="result-details">
+            <p><strong>Subject:</strong> {{ complaint["subject"] }}</p>
+            <p><strong>Category:</strong> {{ complaint["category"] }}</p>
+            <p><strong>Submitted on:</strong> {{ complaint["date"] }}</p>
+            <p><strong>Last updated:</strong> {{ complaint["updated"] }}</p>
+        </div>
+
+    </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}

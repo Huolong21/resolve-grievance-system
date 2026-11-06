@@ -1,0 +1,64 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Submit a Complaint | Resolve{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-heading">
+        <p class="eyebrow">WE ARE HERE TO LISTEN</p>
+        <h1>Speak up.<br>Let's make things <span>better.</span></h1>
+        <p>Fill in the details below to submit your concern. Your complaint will be recorded and assigned a unique tracking ID.</p>
+    </div>
+
+    <form class="complaint-form" method="POST">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Complaint Category</label>
+            <select name="category" required>
+                <option value="">Select a category</option>
+                <option>Academic Issues</option>
+                <option>Infrastructure</option>
+                <option>Administration</option>
+                <option>Hostel Facilities</option>
+                <option>Library</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Complaint Subject</label>
+            <input type="text" name="subject" placeholder="Briefly describe your concern" required>
+        </div>
+
+        <div class="form-group">
+            <label>Complaint Description</label>
+            <textarea name="description" rows="6" placeholder="Explain your concern in detail..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary submit-button">
+            Submit Complaint ↗
+        </button>
+
+        <p class="form-note">Please provide accurate information so your concern can be reviewed.</p>
+
+    </form>
+
+</section>
+
+{% endblock %}
